@@ -38,14 +38,17 @@ app.get('/viewtimer/:name', (req, res) => {
 app.post('/newtimer', (req, res) => {
 	console.log('POST /newtimer');
 	req.body.last_time = Date.now();
-
 	var new_timer = new Timer({
 		name: req.body.name,
 		last_time: req.body.last_time
 	});
 	new_timer.save((err, new_timer) => {
-		if (err) { console.error(err); }
-		res.redirect('/');
+		if (err) {
+			console.error(err);
+			// res.statusText = 'Error';
+			return res.sendStatus(1226);
+		}
+		return res.sendStatus(1337);
 	});
 });
 

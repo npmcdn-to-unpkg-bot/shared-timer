@@ -20,12 +20,11 @@ export default class Login extends React.Component {
   login(e) {
     var baseName = document.getElementById('text_input').value;
     if(!baseName) { return; }
-    fetch('/viewtimer/' + baseName).then((response) => {
-        return response.json();
+    fetch('/viewtimer/' + baseName).then((res) => {
+        return res.json();
     }).then((data) => {
         this.setState({loginIsVisible: false, loginFailed: false, timer: data.timer});
     }).catch((err) => {
-        console.log("loginFailed");
         this.setState({
           loginIsVisible: true,
           loginFailed: true,
@@ -38,12 +37,10 @@ export default class Login extends React.Component {
   }
 
   updateTimer(e) {
-    fetch('/updatetimer/' + this.state.timer.name, { method: 'PUT' }).then((response) => {
-        return response.json();
+    fetch('/updatetimer/' + this.state.timer.name, { method: 'PUT' }).then((res) => {
+        return res.json();
     }).then((data) => {
-        // const loginIsVisible = this.state.loginIsVisible;
         this.setState({timer: data.timer});
-        console.log(this.state);
     }).catch((err) => {
         console.log("Update error");
         throw new Error(err);
