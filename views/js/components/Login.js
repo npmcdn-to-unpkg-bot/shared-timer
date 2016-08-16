@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "moment";
 
 const VISIBLE = { visibility: "visible" };
 const HIDDEN = { visibility: "hidden" };
@@ -68,10 +69,10 @@ export default class Login extends React.Component {
         </div>
         <div class={"panel panel-default" + viewTimerClass}>
           <div class="panel-heading">
-            <h3 class="panel-title">{this.state.timer.name}</h3>
+            <div class="panel-title">{this.state.timer.name}</div>
           </div>
           <div class="panel-body">
-            <div>Time until expiration: {this.state.timer.last_time.toLocaleString()}</div>
+            <div>Last updated: {Moment(this.state.timer.last_time).format("dddd, MMMM Do YYYY, h:mm a")}</div>
             <div>
               <button onClick={this.updateTimer.bind(this)} class="btn btn-primary">Reset</button>
               <button onClick={this.backToLogin.bind(this)} class="btn btn-default">Back to login</button>

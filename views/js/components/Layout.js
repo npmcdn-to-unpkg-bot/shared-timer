@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "moment";
 
 import NavBar from "./NavBar";
 
@@ -10,7 +11,14 @@ export default class Layout extends React.Component {
     };
   }
 
+  updateTime() {
+    setTimeout(() => {
+      this.setState({ title: Moment().format("dddd, MMMM Do YYYY, h:mm a") });
+    }, 5000);
+  }
+
   render() {
+    this.updateTime();
     return (
       <div>
         <NavBar />

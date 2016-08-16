@@ -17,6 +17,7 @@
     "express-react-views": "^0.10.2",
     "history": "^3.0.0",
     "jsx": "^0.9.89",
+    "moment": "^2.14.1",
     "mongodb": "^2.2.1",
     "mongoose": "^4.5.4",
     "pug": "^2.0.0-beta4",
