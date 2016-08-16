@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
-const bodyParser= require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Timer = require('./models/timer');
 
-mongoose.connect('mongodb://timer:timer@ds015750.mlab.com:15750/basetimer');
+const USERNAME = process.env.MLAB_USERNAME;
+const PASSWORD = process.env.MLAB_PASSWORD;
+
+mongoose.connect('mongodb://' + USERNAME + ':' + PASSWORD + '@ds015750.mlab.com:15750/basetimer');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
