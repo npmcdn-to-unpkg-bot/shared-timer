@@ -49,9 +49,9 @@ app.post('/newtimer', (req, res) => {
 		if (err) {
 			console.error(err);
 			// res.statusText = 'Error';
-			return res.sendStatus(1226);
+			return res.sendStatus(299);
 		}
-		return res.sendStatus(1337);
+		return res.sendStatus(200);
 	});
 });
 

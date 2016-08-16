@@ -24,10 +24,10 @@ export default class CreateTimer extends React.Component {
         console.log(res);
         return res;
     }).then((data) => {
-        if(data.status === 1226) {
+        if(data.status === 299) {
           this.setState({create_result: "That name is already in use :("});
         }
-        else if(data.status === 1337) {
+        else if(data.status === 200) {
           this.setState({create_result: "Success!"});
         }
     }).catch((err) => {
