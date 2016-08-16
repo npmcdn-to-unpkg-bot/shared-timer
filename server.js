@@ -12,8 +12,8 @@ mongoose.connect('mongodb://' + USERNAME + ':' + PASSWORD + '@ds015750.mlab.com:
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-	app.listen(3000, () => {
-		console.log('listening on 3000');
+	app.listen(process.env.PORT || 3000, () => {
+		console.log('listening on ' +  process.env.PORT || '3000');
 	});
 });
 
