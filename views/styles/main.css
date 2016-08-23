@@ -1,11 +1,3 @@
-a:link {
-	/*text-decoration: underline;*/
-	color: #F2672B;
-}
-a:visited { color: #F2672B; }
-a:hover { color: #F2EFDC; }
-a:active { color: #F2672B; }
-
 body {
 	background: #404040;
 	font-family: Lato, arial;
