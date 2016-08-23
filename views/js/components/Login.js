@@ -19,9 +19,9 @@ export default class Login extends React.Component {
   }
 
   login(e) {
-    var baseName = document.getElementById('text_input').value;
-    if(!baseName) { return; }
-    fetch('/viewtimer/' + baseName).then((res) => {
+    var timerName = document.getElementById('text_input').value;
+    if(!timerName) { return; }
+    fetch('/viewtimer/' + timerName).then((res) => {
         return res.json();
     }).then((data) => {
         this.setState({loginIsVisible: false, loginFailed: false, timer: data.timer});
@@ -61,11 +61,11 @@ export default class Login extends React.Component {
     return (
       <div>
         <form class={loginClass}>
-          <input id="text_input" placeholder="Enter your base name"></input>
+          <input id="text_input" placeholder="Enter your timer name"></input>
           <button onClick={this.login.bind(this)} class="btn btn-primary">Submit</button>
         </form>
         <div class={"" + loginFailedClass}>
-          Could not find a base under that name
+          Could not find a timer under that name
         </div>
         <div class={"panel panel-default" + viewTimerClass}>
           <div class="panel-heading">

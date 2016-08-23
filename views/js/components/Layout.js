@@ -7,7 +7,7 @@ export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: "BASE TIMER"
+      title: "SHARED TIMER"
     };
   }
 

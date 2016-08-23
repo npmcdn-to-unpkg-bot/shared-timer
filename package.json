@@ -1,7 +1,7 @@
 {
-  "name": "base_timer",
-  "version": "0.0.0",
-  "description": "Timer for breaking point's bases",
+  "name": "shared_timer",
+  "version": "0.0.1",
+  "description": "A timer which anyone can update",
   "main": "webpack.config.js",
   "dependencies": {
     "babel-loader": "^6.2.4",

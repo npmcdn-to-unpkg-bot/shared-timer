@@ -10,8 +10,8 @@ export default class CreateTimer extends React.Component {
   }
 
   newTimer(e) {
-    var baseName = document.getElementById('text_input').value;
-    var jsonName = JSON.stringify({name: baseName});
+    var timerName = document.getElementById('text_input').value;
+    var jsonName = JSON.stringify({name: timerName});
     fetch('/newtimer',
     {
       method: 'POST',
@@ -40,7 +40,7 @@ export default class CreateTimer extends React.Component {
 
     return (
       <div>
-        <input type="text" id="text_input" placeholder="Base name?"></input>
+        <input type="text" id="text_input" placeholder="Timer name?"></input>
         <button onClick={this.newTimer.bind(this)} class="btn btn-primary">Create Timer</button>
         <div>{this.state.create_result}</div>
       </div>
