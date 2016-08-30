@@ -4,13 +4,13 @@ import Moment from "moment";
 const VISIBLE = { visibility: "visible" };
 const HIDDEN = { visibility: "hidden" };
 
-export default class Login extends React.Component {
+export default class Lookup extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      loginIsVisible: true,
-      loginFailed: false,
+      lookupIsVisible: true,
+      lookupFailed: false,
       timer: {
         name: "",
         last_time: ""
@@ -18,17 +18,17 @@ export default class Login extends React.Component {
     };
   }
 
-  login(e) {
+  lookup(e) {
     var timerName = document.getElementById('text_input').value;
     if(!timerName) { return; }
     fetch('/viewtimer/' + timerName).then((res) => {
         return res.json();
     }).then((data) => {
-        this.setState({loginIsVisible: false, loginFailed: false, timer: data.timer});
+        this.setState({lookupIsVisible: false, lookupFailed: false, timer: data.timer});
     }).catch((err) => {
         this.setState({
-          loginIsVisible: true,
-          loginFailed: true,
+          lookupIsVisible: true,
+          lookupFailed: true,
           timer: {
             name: "",
             last_time: ""
@@ -48,23 +48,23 @@ export default class Login extends React.Component {
     });
   }
 
-  backToLogin(e) {
-    this.setState({loginIsVisible: true});
+  backToLookup(e) {
+    this.setState({lookupIsVisible: true});
   }
 
   render() {
 
-    const loginClass = this.state.loginIsVisible ? "" : " hidden";
-    const viewTimerClass = this.state.loginIsVisible ? " hidden" : "";
-    const loginFailedClass = this.state.loginFailed ? "visible" : "hidden";
+    const lookupClass = this.state.lookupIsVisible ? "" : " hidden";
+    const viewTimerClass = this.state.lookupIsVisible ? " hidden" : "";
+    const lookupFailedClass = this.state.lookupFailed ? "visible" : "hidden";
 
     return (
       <div>
-        <form class={loginClass}>
+        <form class={lookupClass}>
           <input id="text_input" placeholder="Enter your timer name"></input>
-          <button onClick={this.login.bind(this)} class="btn btn-primary">Submit</button>
+          <button onClick={this.lookup.bind(this)} class="btn btn-primary">Submit</button>
         </form>
-        <div class={"" + loginFailedClass}>
+        <div class={"" + lookupFailedClass}>
           Could not find a timer under that name
         </div>
         <div class={"panel panel-default" + viewTimerClass}>
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
             <div>Last updated: {Moment(this.state.timer.last_time).format("dddd, MMMM Do YYYY, h:mm a")}</div>
             <div>
               <button onClick={this.updateTimer.bind(this)} class="btn btn-primary">Reset</button>
-              <button onClick={this.backToLogin.bind(this)} class="btn btn-default">Back to login</button>
+              <button onClick={this.backToLookup.bind(this)} class="btn btn-default">Back to lookup</button>
             </div>
           </div>
         </div>
